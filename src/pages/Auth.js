@@ -104,7 +104,7 @@ export const Auth = () => {
   async function handleClickApprove() {
     setIsReady(false);
     const result = await approveMethod(msgBytes);
-    if (result.data?.type && result.data.type === PROTOCOL_CONSTANTS.PROTOCOL_MESSAGE_TYPE.AUTHORIZATION_REQUEST_MESSAGE_TYPE) {
+    if (result.data?.type && result.data.type === PROTOCOL_CONSTANTS.PROTOCOL_MESSAGE_TYPE.CREDENTIAL_OFFER_MESSAGE_TYPE) {
       const newPayload = Base64.encode(JSON.stringify(result.data));
       navigate("/");
       setTimeout(_ => navigate(`/auth?type=base64&payload=${newPayload}`), 2000);
